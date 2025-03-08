@@ -16,7 +16,7 @@ from .models import User, UserProfile, Violation
 import json
 import os
 import logging
-import magic
+import magic as magic_win
 from django.utils import timezone
 
 logger = logging.getLogger(__name__)
@@ -59,7 +59,7 @@ def validate_video_file(file) -> None:
     """
     if file.size > MAX_VIDEO_SIZE:
         raise ValidationError(f"Video file too large. Max size is {MAX_VIDEO_SIZE/1024/1024}MB")
-    file_type = magic.from_buffer(file.read(1024), mime=True)
+    file_type = magic_win.from_buffer(file.read(1024), mime=True)
     file.seek(0)  # Reset file pointer after reading
     if file_type not in ALLOWED_VIDEO_TYPES:
         raise ValidationError(f"Invalid file type. Allowed types: {', '.join(ALLOWED_VIDEO_TYPES)}")

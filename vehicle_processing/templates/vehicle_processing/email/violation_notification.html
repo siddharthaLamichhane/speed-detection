@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .violation-details {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .warning {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h2>Speed Violation Alert</h2>
+    </div>
+
+    <p>Dear {{ username }},</p>
+
+    <p>This email is to notify you that your vehicle has been detected exceeding the speed limit.</p>
+
+    <div class="violation-details">
+        <h3>Violation Details:</h3>
+        <p><strong>License Plate:</strong> {{ license_plate }}</p>
+        <p><strong>Detected Speed:</strong> <span class="warning">{{ speed }} km/h</span></p>
+        <p><strong>Speed Limit:</strong> {{ speed_limit }} km/h</p>
+        <p><strong>Excess Speed:</strong> <span class="warning">{{ excess_speed }} km/h</span></p>
+        <p><strong>Time of Violation:</strong> {{ timestamp }}</p>
+    </div>
+
+    <p>Please ensure you follow the speed limits to maintain road safety and avoid further violations.</p>
+
+    <div class="footer">
+        <p>This is an automated message. Please do not reply to this email.</p>
+    </div>
+</body>
+</html> 

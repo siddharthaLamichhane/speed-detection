@@ -81,18 +81,19 @@ def upload_video(request) -> JsonResponse:
     try:
         # Validate the uploaded video file
         validate_video_file(video)
-        print("after validation")
+        print("Sucessful validation of video File")
 
         # Save the video file to the specified location
         fs = FileSystemStorage(location=os.path.join(settings.MEDIA_ROOT, 'videos'))
         filename = fs.save(video.name, video)
         video_path = fs.path(filename)
+        print(f"Video {filename} is saved at {video_path}")
 
         # Extract license plates and speeds from the video
         license_plate_reader = LicensePlateReader()
-        print("lpr",license_plate_reader)
+        print("Liscense plate reader output:",license_plate_reader)
         license_plate_and_speeds = license_plate_reader.extract_license_plate_and_speed(video_path)
-        print("licenceplate",license_plate_and_speeds)
+        print("extracted liscence plate and speed [tuple]: ",license_plate_and_speeds)
         if not license_plate_and_speeds:
             return JsonResponse({'error': 'No license plates detected in the video', 'file_url': fs.url(filename)}, status=400)
 

@@ -1,0 +1,14 @@
+
+__pycache__/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+media/
+.env
+.env  # If you have a .env file for environment variables
+venv/ # Or myenv/, depending on your virtual environment name
+*.log # Log files
+*.swp # Swap files
+*.DS_Store # macOS system files
